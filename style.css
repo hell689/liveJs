@@ -1,0 +1,12 @@
+body {
+    font-size: 15pt;
+}
+
+canvas {
+  border: 1px solid blue;
+}
+
+#birthInp, #survInp {
+  width: 80px;
+  margin: 0px 5px;
+}
