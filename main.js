@@ -1,10 +1,10 @@
-const pxSize = 320
+let pxSize = 320
 
-const cellPxSize = 1
-const cellCount = pxSize / cellPxSize
+let cellPxSize = 1
+let cellCount = pxSize / cellPxSize
 const cellColor = '#000'
 const clearColor = '#fff'
-const emptyBorder = 0
+let emptyBorder = 0
 
 let birthArr = []
 let survArr = []
@@ -21,9 +21,12 @@ const birthInput = document.querySelector('#birthInp')
 const survInput = document.querySelector('#survInp')
 const rulesBtn = document.querySelector('#setRulesBtn')
 const intervalInput = document.querySelector('#intInp')
+const winSizeInput = document.querySelector('#winSizeInp')
+const cellSizeInput = document.querySelector('#cellSizeInp')
+const emptyBorderInput = document.querySelector('#emptyBorderInp')
+const sizeBtn = document.querySelector('#setSizesBtn')
 
-canv.width = pxSize
-canv.height = pxSize
+sizeBtnClick()
 
 const ctx = canv.getContext('2d')
 
@@ -49,6 +52,7 @@ startStopBtn.addEventListener('click', startStopClick)
 clearFieldBtn.addEventListener('click', clearFieldBtnClick)
 randBtn.addEventListener('click', randBtnClick)
 rulesBtn.addEventListener('click', rulesBtnClick)
+sizeBtn.addEventListener('click', sizeBtnClick)
 
 canv.addEventListener('click', canvClick)
 
@@ -88,6 +92,15 @@ function rulesBtnClick() {
   survArr = survInput.value.split(',').map(v => Number(v))
 }
 
+function sizeBtnClick() {
+  pxSize = Number(winSizeInput.value)
+  cellPxSize = Number(cellSizeInput.value)
+  emptyBorder = Number(emptyBorderInput.value)
+  canv.width = pxSize
+  canv.height = pxSize
+  cellCount = pxSize / cellPxSize
+}
+
 function canvClick(e) {
   const ox = e.offsetX
   const oy = e.offsetY
@@ -98,7 +111,7 @@ function canvClick(e) {
   cellsArr[x][y] = cellZnach
   const color = cellZnach ? cellColor : clearColor
   fillCell(x, y, color)
-  
+
 }
 
 //==================================
@@ -158,7 +171,7 @@ function calcNextStep() {
     }
   }
   cellsArr = newGenArr
-  
+
 }
 
 function calcNbCount(x, y) {

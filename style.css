@@ -1,12 +1,27 @@
 body {
-    font-size: 15pt;
+    font-size: 12pt;
 }
 
 canvas {
   border: 1px solid blue;
 }
 
-#birthInp, #survInp {
-  width: 80px;
+div {
+  margin: 5px 0px;
+}
+
+button {
   margin: 0px 5px;
+}
+
+#birthInp, #survInp {
+  width: 70px;
+}
+
+#cellSizeInp, #emptyBorderInp {
+  width: 30px;
+}
+
+#winSizeInp {
+  width: 50px;
 }
